@@ -19,4 +19,7 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('admin/', admin.site.urls),
+    path('api/users/', include('users.urls')),  # Forwards anything starting with /api/users/
 ]
