@@ -21,5 +21,6 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('api/users/', include('users.urls')),  # Forwards anything starting with /api/users/
-    
+    path('api/resources/', include('resources.urls')), # Forwards anything starting with /api/resources
+   
 ]
