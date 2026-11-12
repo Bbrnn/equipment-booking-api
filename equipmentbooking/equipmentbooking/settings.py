@@ -10,10 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / '.env')
 
 
 # Quick-start development settings - unsuitable for production
@@ -21,7 +27,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+#DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = True #In production the debug is supposed to be False for security purposes
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -91,6 +98,17 @@ DATABASES = {
 
 #user models default abstractuser
 AUTH_USER_MODEL = 'users.User'
+
+#JWT REST FRAMEWORK
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
 
 
 # Password validation
