@@ -22,7 +22,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
             phone_number=validated_data.get('phone_number', ''),
             role='employee'  # Always default to lowest privilege
         )
-
+ 
 
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
